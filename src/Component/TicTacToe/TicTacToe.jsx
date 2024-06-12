@@ -26,6 +26,7 @@ export const TicTacToe = () => {
         if (lock) {
             return 0;
         }
+        if(e.target.innerHTML === ""){
         if (count % 2 === 0) {
             e.target.innerHTML = `<img src = ${cross_icon}>`;
             data[num] = "x";
@@ -36,7 +37,7 @@ export const TicTacToe = () => {
             data[num] = "o";
             setCount(++count);
         }
-        checkWin();
+        checkWin();}
     }
 
 
