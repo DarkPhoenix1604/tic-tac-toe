@@ -1,4 +1,3 @@
-import './App.css';
 import { TicTacToe } from './Component/TicTacToe/TicTacToe';
 
 function App() {
