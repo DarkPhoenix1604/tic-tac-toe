@@ -23,16 +23,17 @@ export const TicTacToe = () => {
     let box_array = [box1, box2, box3, box4, box5, box6, box7, box8, box9];
 
     const toggle = (e, num) => {
-        if (lock) {
-            return 0;
-        }
-        if ((e.target.innerHTML === "") || (e.target.innerHTML === " ")) {
+        if (data[num]===" ") {
+            if (lock) {
+                return 0;
+            }
+
             if (count % 2 === 0) {
                 e.target.innerHTML = `<img src = ${cross_icon}>`;
                 data[num] = "x";
                 setCount(++count);
             }
-            else {
+            else if (count % 2 === 1) {
                 e.target.innerHTML = `<img src = ${circle_icon}>`;
                 data[num] = "o";
                 setCount(++count);
@@ -43,28 +44,28 @@ export const TicTacToe = () => {
 
 
     const checkWin = () => {
-        if (data[0] === data[1] && data[2] === data[1] && data[2] !== " ") {
+        if (data[0] === data[1] && data[2] === data[1] && data[2] !== " " && data[2] !== "") {
             won(data[0]);
         }
-        else if (data[3] === data[4] && data[4] === data[5] && data[5] !== " ") {
+        else if (data[3] === data[4] && data[4] === data[5] && data[5] !== " " && data[5] !== "") {
             won(data[3]);
         }
-        else if (data[6] === data[7] && data[7] === data[8] && data[8] !== " ") {
+        else if (data[6] === data[7] && data[7] === data[8] && data[8] !== " " && data[8] !== "") {
             won(data[6]);
         }
-        else if (data[0] === data[3] && data[3] === data[6] && data[6] !== " ") {
+        else if (data[0] === data[3] && data[3] === data[6] && data[6] !== " " && data[6] !== "") {
             won(data[0]);
         }
-        else if (data[1] === data[4] && data[4] === data[7] && data[7] !== " ") {
+        else if (data[1] === data[4] && data[4] === data[7] && data[7] !== " " && data[7] !== "") {
             won(data[1]);
         }
-        else if (data[2] === data[5] && data[5] === data[8] && data[8] !== " ") {
+        else if (data[2] === data[5] && data[5] === data[8] && data[8] !== " " && data[8] !== "") {
             won(data[2]);
         }
-        else if (data[0] === data[4] && data[4] === data[8] && data[8] !== " ") {
+        else if (data[0] === data[4] && data[4] === data[8] && data[8] !== " " && data[8] !== "") {
             won(data[0]);
         }
-        else if (data[2] === data[4] && data[4] === data[6] && data[6] !== " ") {
+        else if (data[2] === data[4] && data[4] === data[6] && data[6] !== " " && data[6] !== "") {
             won(data[2]);
         }
     }
@@ -84,8 +85,9 @@ export const TicTacToe = () => {
         data = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
         titleRef.current.innerHTML = `Tic Tac Toe <span>React</span>`;
         box_array.map((e) => {
-            e.current.innerHTML = " ";
+            e.current.innerHTML = '';
         })
+        setCount(0);
     }
 
     return (
@@ -109,6 +111,6 @@ export const TicTacToe = () => {
                 </div>
             </div>
             <button className="reset" onClick={() => { reset() }}>Reset</button>
-        </div>
+        </div >
     )
 }
